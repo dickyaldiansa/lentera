@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title','Sertifikat '.$certificate->number)
+@section('content')
+<section class="panel certificate-print"><span class="eyebrow blue-text">SERTIFIKAT KEIKUTSERTAAN</span><h1>Sertifikat</h1><p>Diberikan kepada</p><h2>{{ $certificate->recipient_name }}</h2><p>atas partisipasinya dalam kegiatan <b>{{ $certificate->application->title }}</b> ({{ $certificate->application->activityType->name }}) yang diselenggarakan pada {{ $certificate->application->start_date->translatedFormat('d F Y') }} – {{ $certificate->application->end_date->translatedFormat('d F Y') }}.</p><hr><dl class="detail-list"><div><dt>Nomor Sertifikat</dt><dd>{{ $certificate->number }}</dd></div><div><dt>Tanggal Terbit</dt><dd>{{ $certificate->issued_at->translatedFormat('d F Y') }}</dd></div><div><dt>Verifikasi</dt><dd>{{ route('certificates.verify',$certificate->verification_token) }}</dd></div></dl><div class="form-actions"><a class="button secondary" href="{{ route('applications.show',$certificate->application) }}">Kembali</a><button class="button" onclick="window.print()">Cetak / Simpan PDF</button></div></section>
+@endsection
