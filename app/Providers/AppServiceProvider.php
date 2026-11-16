@@ -7,6 +7,7 @@ use App\Models\ApplicationCoordinationTask;
 use App\Models\WorkflowTask;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if (config('app.env') === 'production') {
+                URL::forceScheme('https');
+        }
+
         View::composer('layouts.app',function($view){
             $count=0;$applicantCount=0;
             if(auth()->check() && auth()->user()->hasRole('super-admin','diklat-admin','diklat-head')){
