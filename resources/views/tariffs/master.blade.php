@@ -2,6 +2,7 @@
 @section('title','Tarif Layanan')
 @section('content')
 <div class="page-head"><div><span class="eyebrow">Master Data</span><h1>Tarif Layanan</h1><p>Kelola nominal, satuan, kelompok peserta, dan tarif yang ditampilkan kepada pemohon.</p></div><div class="head-actions"><a class="button secondary" href="{{ route('master.index') }}">Kembali</a><a class="button" href="{{ route('master.create','tariffs') }}">Tambah Tarif</a></div></div>
+@include('tariffs.regulations',['manage'=>true])
 <section class="panel"><p>Perubahan tarif berlaku sebagai acuan tagihan berikutnya. Invoice yang sudah terbit tetap menyimpan nominalnya.</p>
 <div class="table-wrap"><table><thead><tr><th>Kelompok / Layanan</th><th>Peserta</th><th>Satuan</th><th>Nominal</th><th>Publikasi</th><th>Aksi</th></tr></thead><tbody>
 @forelse($tariffs as $tariff)<tr>

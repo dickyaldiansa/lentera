@@ -130,6 +130,7 @@ class OperationsController extends Controller
     public function masterDataset(string $dataset)
     {
         if($dataset==='tariffs')return view('tariffs.master',[
+            'regulations'=>\App\Models\TariffRegulation::orderByDesc('is_current')->orderByDesc('year')->orderByDesc('id')->get(),
             'tariffs'=>\App\Models\Tariff::with('activityType')->orderBy('category')->orderBy('sort_order')->orderBy('id')->paginate(25),
         ]);
         $definitions=[

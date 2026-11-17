@@ -87,5 +87,6 @@
     </main>
 
     @include('public.footer')
+    <x-diklat-contact/>
 </body>
 </html>

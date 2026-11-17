@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','Dashboard')
 @section('content')
+<x-diklat-contact/>
 <div class="page-head">
     <div>
         <span class="eyebrow">{{ now()->translatedFormat('l, d F Y') }}</span>

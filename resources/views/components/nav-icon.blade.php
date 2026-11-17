@@ -1,6 +1,7 @@
 @props(['name'])
 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 @switch($name)
+@case('whatsapp')<path d="M20.5 11.7a8.5 8.5 0 01-12.6 7.5L3 20.5l1.3-4.8A8.5 8.5 0 1120.5 11.7z"/><path d="M8 7.5c-.7.5-.8 1.6-.4 2.5 1.1 2.7 3.2 4.8 5.9 5.5.9.3 2-.2 2.5-1l.2-.9-2.5-1.2-.9 1c-1.5-.6-2.7-1.8-3.3-3.2l.9-.9-1.1-2.2z"/>@break
 @case('dashboard')<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/>@break
 @case('application')<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>@break
 @case('activity')<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 14h3v3H8z"/>@break

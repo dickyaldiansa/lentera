@@ -118,6 +118,15 @@ Route::middleware('auth')->group(function(){
  });
  Route::get('/audit-logs',[DirectoryController::class,'audits'])->middleware('permission:audit.view')->name('audits');
  Route::get('/master-data',[OperationsController::class,'masterData'])->middleware('permission:master.manage')->name('master.index');
+ Route::get('/tariff-regulations/{regulation}/document',[\App\Http\Controllers\TariffRegulationController::class,'document'])->name('tariff-regulations.document');
+ Route::middleware('permission:master.manage')->group(function(){
+  Route::get('/master-data/tariff-regulations/create',[\App\Http\Controllers\TariffRegulationController::class,'create'])->name('tariff-regulations.create');
+  Route::post('/master-data/tariff-regulations',[\App\Http\Controllers\TariffRegulationController::class,'store'])->name('tariff-regulations.store');
+  Route::get('/master-data/tariff-regulations/{regulation}/edit',[\App\Http\Controllers\TariffRegulationController::class,'edit'])->name('tariff-regulations.edit');
+  Route::put('/master-data/tariff-regulations/{regulation}',[\App\Http\Controllers\TariffRegulationController::class,'update'])->name('tariff-regulations.update');
+ });
+ Route::get('/master-data/diklat-contact',[\App\Http\Controllers\DiklatContactController::class,'edit'])->middleware('permission:master.manage')->name('master.diklat-contact.edit');
+ Route::put('/master-data/diklat-contact',[\App\Http\Controllers\DiklatContactController::class,'update'])->middleware('permission:master.manage')->name('master.diklat-contact.update');
  Route::middleware('permission:master.manage')->group(function(){
   Route::get('/master-data/workflows',[WorkflowMasterController::class,'index'])->name('workflow-master.index');
   Route::get('/master-data/workflows/create',[WorkflowMasterController::class,'create'])->name('workflow-master.create');
